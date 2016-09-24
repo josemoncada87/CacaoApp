@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "390201177541",
+    "firebase_url": "https://cacaoapp-f9f17.firebaseio.com",
+    "project_id": "cacaoapp-f9f17",
+    "storage_bucket": "cacaoapp-f9f17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390201177541:android:00511dfc86aa5f1a",
+        "android_client_info": {
+          "package_name": "co.edu.icesi.innlab.cacaoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390201177541-rmksb95vmkjddn2t7r1ha18f18655jjl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.icesi.innlab.cacaoapp",
+            "certificate_hash": "D164447254085888E95B7806DE1BB0E32DAD5674"
+          }
+        },
+        {
+          "client_id": "390201177541-006fjb2j7907o7sefcna9phumn4nlfkm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDncC-XrlBkXWq5RQNkq66_Fnvuy5ik1vg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390201177541-006fjb2j7907o7sefcna9phumn4nlfkm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
