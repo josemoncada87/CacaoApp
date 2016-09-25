@@ -46,7 +46,8 @@
         android:id="@+id/edt_login_usuario"
         android:hint="Usuario"
         android:layout_below="@+id/tv_login_mensaje"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="jamoncada@icesi.edu.co" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,7 +58,8 @@
         android:hint="Contraseña"
         android:layout_below="@+id/edt_login_usuario"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:text="123456" />
 
     <Button
         android:text="Ingresar"

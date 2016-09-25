@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "390201177541-gdbud4bcsnjr07jus5a2f25004jf9iaf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.edu.icesi.innlab.cacaoapp",
+            "certificate_hash": "ADB9EC651CC34399DABACF523CC406B39AD9A063"
+          }
+        },
+        {
           "client_id": "390201177541-rmksb95vmkjddn2t7r1ha18f18655jjl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -20,6 +20,14 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.auth.api.model.GetTokenResponse;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import co.edu.icesi.innlab.cacaoapp.retos.RetoContent;
 
 public class ActividadPrincipal extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, RetoFragment.OnListFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
@@ -61,8 +69,23 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
         retoTabFragment = RetoFragment.newInstance(1);
+
+        // ibtener información del usuario
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+            Task<GetTokenResult> resultado = user.getToken(true);
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+            System.out.println("información usuario: " + name +" "+ email +" "+ photoUrl +" "+ uid +" " + resultado);
+        }
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +93,13 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
             public void onClick(View view) {
              /*   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-               RetoContent.addItem(RetoContent.createRetoItem("monk"+Math.random(), 3000, true));
+               RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
                retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
+
+                // Write a message to the database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("retos/reto/"+RetoContent.ITEMS.size());
+                myRef.setValue("nuevo reto");
             }
         });
 

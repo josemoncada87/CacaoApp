@@ -75,9 +75,9 @@ public class ActividadLogin extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail", task.getException());
                             Toast.makeText(ActividadLogin.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                        }else {
+                            startActivity(new Intent(getApplicationContext(), ActividadPrincipal.class));
                         }
-
-                        startActivity(new Intent(getApplicationContext(), ActividadPrincipal.class));
 
                     }
                 });
@@ -96,9 +96,9 @@ public class ActividadLogin extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Toast.makeText(ActividadLogin.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                        }
+                        }else{
 
-                        // ...
+                        }
                     }
                 });
     }
