@@ -61,6 +61,9 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+
+        retoTabFragment = RetoFragment.newInstance(1);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,8 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
                retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
             }
         });
+
+
 
     }
 
@@ -169,8 +174,7 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
                     retorno = EstadisticasFragment.newInstance("","");
                     break;
                 case 2:
-                    retorno = RetoFragment.newInstance(1);
-                    retoTabFragment = (RetoFragment) retorno;
+                    retorno = retoTabFragment;
                     break;
             }
             return retorno;
