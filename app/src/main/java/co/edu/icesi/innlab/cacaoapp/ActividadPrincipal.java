@@ -71,7 +71,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
-                    new PerfilFragment(),
+                    PerfilFragment.newInstance("",""),
                     new EstadisticasFragment(),
                     new RetoFragment(),
             };
@@ -111,10 +111,10 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         // mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager()); //
-
+        System.out.println("info: " + mPagerAdapter.getItem(0).getTag());
         //getFragmentManager().findFragmentById(R.id.your_fragment).getView().findViewById(R.id.your_view);
-       /* nombreUsuario = (TextView) mPagerAdapter.getItem(0).getView().findViewById(R.id.tv_frag_perfil_nombre);
-        nombreEquipo = (TextView) findViewById(R.id.tv_frag_perfil_nombre_equipo);
+        //nombreUsuario = (TextView) .getView().findViewById(R.id.tv_frag_perfil_nombre);
+       /* nombreEquipo = (TextView) findViewById(R.id.tv_frag_perfil_nombre_equipo);
         numeroDeCacaos = (TextView) findViewById(R.id.tv_frag_perfil_tx_cacaos);
         rankingEquipo = (TextView) findViewById(R.id.tv_frag_perfil_tx_ranking_equipo);*/
 
