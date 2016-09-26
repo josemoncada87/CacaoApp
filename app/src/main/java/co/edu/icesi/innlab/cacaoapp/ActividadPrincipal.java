@@ -1,10 +1,9 @@
 package co.edu.icesi.innlab.cacaoapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -24,13 +23,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
-import com.google.firebase.auth.api.model.GetTokenResponse;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import co.edu.icesi.innlab.cacaoapp.retos.RetoContent;
+import co.edu.icesi.innlab.cacaoapp.model.RetoContent;
 
-public class ActividadPrincipal extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, RetoFragment.OnListFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
+public class ActividadPrincipal extends BaseActivity implements PerfilFragment.OnFragmentInteractionListener, RetoFragment.OnListFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -40,38 +36,91 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+   // private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
 
+    // fragments
     private RetoFragment retoTabFragment;
     private PerfilFragment perfilTabFragment;
     private EstadisticasFragment estadisticas;
+
+    // Views
+    private TextView nombreUsuario;
+    private TextView nombreEquipo;
+    private TextView numeroDeCacaos;
+    private TextView rankingEquipo;
+
+
+////////////////////
+
+    private FragmentPagerAdapter mPagerAdapter;
+  //  private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        //////////////////////////////////////////////////////////////
+
+        // Create the adapter that will return a fragment for each section
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            private final Fragment[] mFragments = new Fragment[] {
+                    new PerfilFragment(),
+                    new EstadisticasFragment(),
+                    new RetoFragment(),
+            };
+            private final String[] mFragmentNames = new String[] {
+                    getString(R.string.titulo_perfil),
+                    getString(R.string.titulo_estadisticas),
+                    getString(R.string.titulo_retos)
+            };
+            @Override
+            public Fragment getItem(int position) {
+                return mFragments[position];
+            }
+            @Override
+            public int getCount() {
+                return mFragments.length;
+            }
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mFragmentNames[position];
+            }
+        };
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        // mViewPager.setAdapter(mSectionsPagerAdapter); //
+        mViewPager.setAdapter(mPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        retoTabFragment = RetoFragment.newInstance(1);
+        //////////////////////////////////////////////////////////////
 
-        // ibtener información del usuario
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        // mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager()); //
+
+        //getFragmentManager().findFragmentById(R.id.your_fragment).getView().findViewById(R.id.your_view);
+       /* nombreUsuario = (TextView) mPagerAdapter.getItem(0).getView().findViewById(R.id.tv_frag_perfil_nombre);
+        nombreEquipo = (TextView) findViewById(R.id.tv_frag_perfil_nombre_equipo);
+        numeroDeCacaos = (TextView) findViewById(R.id.tv_frag_perfil_tx_cacaos);
+        rankingEquipo = (TextView) findViewById(R.id.tv_frag_perfil_tx_ranking_equipo);*/
+
+       // System.out.println(nombreEquipo+" "+nombreEquipo +" "+ numeroDeCacaos +" "+ rankingEquipo);
+
+        /*// obtener información del usuario
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
@@ -84,8 +133,12 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
             System.out.println("información usuario: " + name +" "+ email +" "+ photoUrl +" "+ uid +" " + resultado);
-        }
 
+        }
+        nombreUsuario.setText("chiwilngo rodriguez");
+        nombreEquipo.setText("Renacuajos Bebedores");
+        numeroDeCacaos.setText("Cacaos = 50");
+        rankingEquipo.setText("Ranking = 2");*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -93,15 +146,17 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
             public void onClick(View view) {
              /*   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-               RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
-               retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
+              // RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
+              // retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
 
                 // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
+               /* FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("retos/reto/"+RetoContent.ITEMS.size());
-                myRef.setValue("nuevo reto");
+                myRef.setValue("nuevo reto");*/
             }
         });
+
+
 
 
 
@@ -123,7 +178,13 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
+            return true;
+        }*/
+        if (id == R.id.action_logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
             return true;
         }
 
@@ -132,7 +193,7 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
 // TODO cambiar para perfil
     @Override
     public void onFragmentInteraction(Uri uri) {
-
+        System.out.println("testing...");
     }
 
     // TODO cambiar para retos
@@ -181,22 +242,17 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-
             Fragment retorno = null;
-
-
             switch(position){
                 case 0:
-                    retorno = PerfilFragment.newInstance("","");
+                    retorno = perfilTabFragment;
                     break;
                 case 1:
                     retorno = EstadisticasFragment.newInstance("","");
@@ -207,13 +263,11 @@ public class ActividadPrincipal extends AppCompatActivity implements PerfilFragm
             }
             return retorno;
         }
-
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
         }
-
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {

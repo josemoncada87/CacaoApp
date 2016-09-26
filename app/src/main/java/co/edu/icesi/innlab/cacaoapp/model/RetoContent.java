@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp.retos;
+package co.edu.icesi.innlab.cacaoapp.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import co.edu.icesi.innlab.cacaoapp.RetoFragment.OnListFragmentInteractionListener;
-import co.edu.icesi.innlab.cacaoapp.retos.RetoContent.RetoItem;
+import co.edu.icesi.innlab.cacaoapp.model.RetoContent.RetoItem;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class MyRetoRecyclerViewAdapter extends RecyclerView.Adapter<MyRetoRecycl
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText("0");
         holder.mContentView.setText(mValues.get(position).nombre);
@@ -47,6 +47,7 @@ public class MyRetoRecyclerViewAdapter extends RecyclerView.Adapter<MyRetoRecycl
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
+                    System.out.println("pos:"+position+ " " + holder.mItem.nombre);
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }

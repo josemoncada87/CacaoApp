@@ -17,10 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-
-import co.edu.icesi.innlab.cacaoapp.retos.RetoContent;
-import co.edu.icesi.innlab.cacaoapp.retos.RetoContent.RetoItem;
+import co.edu.icesi.innlab.cacaoapp.model.RetoContent;
+import co.edu.icesi.innlab.cacaoapp.model.RetoContent.RetoItem;
 
 /**
  * A fragment representing a list of Items.
@@ -62,11 +60,11 @@ public class RetoFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("retos/reto/");
+    //    FirebaseDatabase database = FirebaseDatabase.getInstance();
+   //     DatabaseReference myRef = database.getReference("retos/reto/");
 
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+    /*    myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -81,7 +79,7 @@ public class RetoFragment extends Fragment {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
-        });
+        });*/
     }
 
     @Override

@@ -10,12 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-      //  try {
-       //     Thread.sleep(3000);
-            startActivity(new Intent(getApplicationContext(), ActividadLogin.class));
-       // } catch (InterruptedException e) {
-       //     e.printStackTrace();
-      //  }
+        //  startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+        //  finish();
     }
 }
