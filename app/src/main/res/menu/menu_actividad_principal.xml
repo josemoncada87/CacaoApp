@@ -12,4 +12,12 @@
         android:orderInCategory="100"
         android:title="@string/action_logout"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_crear_reto"
+        android:orderInCategory="100"
+        android:title="@string/action_crear_reto"
+        app:showAsAction="never" />
+
+
 </menu>

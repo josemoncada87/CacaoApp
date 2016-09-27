@@ -76,7 +76,7 @@ public abstract class FragmentBaseLista extends Fragment {
                     @Override
                     public void onClick(View v) {
                         System.out.println("CLICK");
-                       // Launch PostDetailActivity
+                       // Launch RetoDetailActivity
                        // Intent intent = new Intent(getActivity(), MainActivity.class);
                        // intent.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
                        // startActivity(intent);

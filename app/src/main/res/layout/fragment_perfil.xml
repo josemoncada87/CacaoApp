@@ -50,18 +50,6 @@
             android:layout_below="@+id/tv_frag_perfil_nombre_equipo"
             android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:text="999"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_frag_perfil_tx_cant_cacaos"
-            android:layout_below="@+id/tv_frag_perfil_tx_cacaos"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/colorAccent"
-            android:textAlignment="center"
-            android:textStyle="normal|bold" />
-
 
         <TextView
             android:text="Puntos ganados"
@@ -99,10 +87,21 @@
             android:id="@+id/tv_frag_perfil_tx_cant_puntos"
             android:textColor="@color/colorAccent"
             android:layout_marginTop="28dp"
-            android:layout_below="@+id/tv_frag_perfil_tx_puntos"
-            android:layout_alignStart="@+id/tv_frag_perfil_tx_cant_cacaos"
             android:textAlignment="center"
             android:textStyle="normal|bold"
+            android:layout_below="@+id/tv_frag_perfil_tx_puntos"
+            android:layout_alignStart="@+id/tv_frag_perfil_tx_cant_cacaos" />
+
+        <TextView
+            android:text="999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_tx_cant_cacaos"
+            android:layout_marginTop="19dp"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/tv_frag_perfil_tx_cacaos"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

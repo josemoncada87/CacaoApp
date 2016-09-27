@@ -10,4 +10,75 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeRetosActivity">
 
+    <TextView
+        android:text="Creador de Retos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_creador_retos_titulo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/tv_creador_retos_titulo"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="47dp"
+        android:id="@+id/edt_creador_retos_nombre"
+        android:hint="Nombre del Reto" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/edt_creador_retos_nombre"
+        android:layout_alignEnd="@+id/edt_creador_retos_nombre"
+        android:layout_marginTop="21dp"
+        android:id="@+id/edt_creador_retos_desc_corta"
+        android:hint="Descripción Corta" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_below="@+id/edt_creador_retos_desc_corta"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp"
+        android:id="@+id/edt_creador_retos_desc_completa"
+        android:hint="Descripción Larga" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/edt_creador_retos_desc_completa"
+        android:layout_alignEnd="@+id/edt_creador_retos_desc_completa"
+        android:layout_marginTop="33dp"
+        android:id="@+id/edt_creador_retos_premio_cacaos"
+        android:hint="Premio Cacaos" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/edt_creador_retos_premio_cacaos"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/edt_creador_retos_premio_puntos"
+        android:hint="Premio Puntos" />
+
+    <Button
+        android:text="Crear Reto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/btn_creador_retos_crear" />
 </RelativeLayout>

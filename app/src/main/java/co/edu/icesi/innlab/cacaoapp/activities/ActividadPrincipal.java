@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import co.edu.icesi.innlab.cacaoapp.R;
+import co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeRetosActivity;
 import co.edu.icesi.innlab.cacaoapp.fragments.EstadisticasFragment;
 import co.edu.icesi.innlab.cacaoapp.fragments.MyRetoFragment;
 import co.edu.icesi.innlab.cacaoapp.fragments.PerfilFragment;
@@ -198,6 +199,13 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, SignInActivity.class));
             finish();
+            return true;
+        }
+
+        if (id == R.id.action_crear_reto) {
+            //FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(this, CreadorDeRetosActivity.class));
+            //finish();
             return true;
         }
 

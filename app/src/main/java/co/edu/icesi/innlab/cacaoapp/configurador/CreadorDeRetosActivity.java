@@ -2,6 +2,10 @@ package co.edu.icesi.innlab.cacaoapp.configurador;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ButtonBarLayout;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,6 +24,18 @@ public class CreadorDeRetosActivity extends BaseActivity {
     // [END declare_database_ref]
 
 
+    //Views
+
+    private TextView nombre;
+    private TextView descCorta;
+    private TextView descCompleta;
+    private TextView premioCacao;
+    private TextView premioPuntos;
+
+    private Button btnCrear;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +45,20 @@ public class CreadorDeRetosActivity extends BaseActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END initialize_database_ref]
 
-        writeNewPost("reto", "Nuevo Reto", "lanzador", "debes crear un lanzador con papel", 100, 100);
+        nombre       =  (TextView) findViewById(R.id.edt_creador_retos_nombre);
+        descCorta    =  (TextView) findViewById(R.id.edt_creador_retos_desc_corta);
+        descCompleta =  (TextView) findViewById(R.id.edt_creador_retos_desc_completa);
+        premioCacao  =  (TextView) findViewById(R.id.edt_creador_retos_premio_cacaos);
+        premioPuntos =  (TextView) findViewById(R.id.edt_creador_retos_premio_puntos);
+
+        btnCrear = (Button) findViewById(R.id.btn_creador_retos_crear);
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeNewPost("reto", nombre.getText().toString(), descCorta.getText().toString(), descCompleta.getText().toString(), Integer.parseInt(premioCacao.getText().toString()),Integer.parseInt(premioPuntos.getText().toString()));
+                finish();
+            }
+        });
     }
 
     // [START write_fan_out]
