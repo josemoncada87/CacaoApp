@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.edu.icesi.innlab.cacaoapp.PerfilFragment">
+    tools:context="co.edu.icesi.innlab.cacaoapp.fragments.PerfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_marginTop="25dp"
+            android:id="@+id/imgv_frag_perfil_foto_usuario"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
 
         <TextView
@@ -23,43 +32,6 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="Tu equipo es el 1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:id="@+id/tv_frag_perfil_tx_ranking_equipo"
-            android:layout_below="@+id/tv_frag_perfil_tx_cacaos"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:text="Cacaos : 50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:id="@+id/tv_frag_perfil_tx_cacaos"
-            android:layout_below="@+id/tv_frag_perfil_nombre_equipo"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:text="Medallas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_frag_perfil_tx_ranking_equipo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:id="@+id/tv_frag_perfil_titulo_medallas"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:layout_marginTop="25dp"
-            android:id="@+id/imgv_frag_perfil_foto_usuario"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
             android:text="Sultanito Martinez de Concha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,6 +39,70 @@
             android:id="@+id/tv_frag_perfil_nombre"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
             android:layout_below="@+id/imgv_frag_perfil_foto_usuario"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Cacaos disponibles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/tv_frag_perfil_tx_cacaos"
+            android:layout_below="@+id/tv_frag_perfil_nombre_equipo"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_tx_cant_cacaos"
+            android:layout_below="@+id/tv_frag_perfil_tx_cacaos"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
+
+
+        <TextView
+            android:text="Puntos ganados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_tx_puntos"
+            android:layout_below="@+id/tv_frag_perfil_tx_cant_cacaos"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+
+        <TextView
+            android:text="Tu equipo es el 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_tx_ranking_equipo"
+            android:layout_below="@+id/tv_frag_perfil_tx_cant_puntos"
+            android:layout_alignStart="@+id/tv_frag_perfil_tx_puntos"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:text="Medallas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_titulo_medallas"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_below="@+id/tv_frag_perfil_tx_ranking_equipo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:text="333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_perfil_tx_cant_puntos"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/tv_frag_perfil_tx_puntos"
+            android:layout_alignStart="@+id/tv_frag_perfil_tx_cant_cacaos"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

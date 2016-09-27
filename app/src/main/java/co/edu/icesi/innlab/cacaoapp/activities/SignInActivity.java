@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp;
+package co.edu.icesi.innlab.cacaoapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import co.edu.icesi.innlab.cacaoapp.model.Estudiante;
+import co.edu.icesi.innlab.cacaoapp.R;
+import co.edu.icesi.innlab.cacaoapp.models.Usuario;
 
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
@@ -154,8 +155,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     // [START basic_write]
     private void writeNewUser(String userId, String name, String email) {
-        Estudiante user = new Estudiante(name, email);
-        mDatabase.child("users").child(userId).setValue(user);
+        Usuario user = new Usuario(name, email);
+        mDatabase.child("usuarios").child(userId).setValue(user);
     }
     // [END basic_write]
 

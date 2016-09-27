@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp;
+package co.edu.icesi.innlab.cacaoapp.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import co.edu.icesi.innlab.cacaoapp.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PerfilFragment.OnFragmentInteractionListener} interface
+ * {@link EstadisticasFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PerfilFragment#newInstance} factory method to
+ * Use the {@link EstadisticasFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PerfilFragment extends Fragment {
+public class EstadisticasFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +31,7 @@ public class PerfilFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public PerfilFragment() {
+    public EstadisticasFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +41,11 @@ public class PerfilFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PerfilFragment.
+     * @return A new instance of fragment EstadisticasFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PerfilFragment newInstance(String param1, String param2) {
-        PerfilFragment fragment = new PerfilFragment();
+    public static EstadisticasFragment newInstance(String param1, String param2) {
+        EstadisticasFragment fragment = new EstadisticasFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +66,7 @@ public class PerfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        return inflater.inflate(R.layout.fragment_estadisticas, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

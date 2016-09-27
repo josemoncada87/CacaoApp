@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp.model;
+package co.edu.icesi.innlab.cacaoapp.models;
 
 /**
  * Created by Usuario on 25/09/2016.
@@ -8,19 +8,20 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 // [START blog_user_class]
 @IgnoreExtraProperties
-public class Estudiante {
+public class Usuario {
 
     public String username;
     public String email;
+    public String grupo;
 
-    public Estudiante() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    public Usuario() {
+        // Default constructor required for calls to DataSnapshot.getValue(Usuario.class)
     }
 
-    public Estudiante(String username, String email) {
+    public Usuario(String username, String email) {
         this.username = username;
         this.email = email;
+        this.grupo = "no_asignado";
     }
-
 }
 // [END blog_user_class]

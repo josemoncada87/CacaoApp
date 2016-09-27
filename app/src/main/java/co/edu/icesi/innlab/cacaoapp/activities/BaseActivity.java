@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp;
+package co.edu.icesi.innlab.cacaoapp.activities;
 
 /**
  * Created by Usuario on 25/09/2016.
@@ -18,7 +18,7 @@ public class BaseActivity extends AppCompatActivity {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setCancelable(false);
-            mProgressDialog.setMessage("Loading...");
+            mProgressDialog.setMessage("Sembrando Cacao...");
         }
 
         mProgressDialog.show();

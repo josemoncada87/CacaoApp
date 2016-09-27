@@ -20,7 +20,7 @@
     tools:context="co.edu.icesi.innlab.cacaoapp.old.ActividadLogin">
 
     <TextView
-        android:text="Ingresa tu usario y contraseña"
+        android:text="Ingresa tu usuario y contraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_login_titulo"

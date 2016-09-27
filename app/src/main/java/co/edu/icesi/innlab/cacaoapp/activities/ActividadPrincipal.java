@@ -1,4 +1,4 @@
-package co.edu.icesi.innlab.cacaoapp;
+package co.edu.icesi.innlab.cacaoapp.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -19,14 +18,20 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import co.edu.icesi.innlab.cacaoapp.model.RetoContent;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ActividadPrincipal extends BaseActivity implements PerfilFragment.OnFragmentInteractionListener, RetoFragment.OnListFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
+import co.edu.icesi.innlab.cacaoapp.R;
+import co.edu.icesi.innlab.cacaoapp.fragments.EstadisticasFragment;
+import co.edu.icesi.innlab.cacaoapp.fragments.MyRetoFragment;
+import co.edu.icesi.innlab.cacaoapp.fragments.PerfilFragment;
+import co.edu.icesi.innlab.cacaoapp.models.Reto;
+
+public class ActividadPrincipal extends BaseActivity implements PerfilFragment.OnFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -43,22 +48,16 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
      */
     private ViewPager mViewPager;
 
-    // fragments
-    private RetoFragment retoTabFragment;
-    private PerfilFragment perfilTabFragment;
-    private EstadisticasFragment estadisticas;
-
-    // Views
-    private TextView nombreUsuario;
-    private TextView nombreEquipo;
-    private TextView numeroDeCacaos;
-    private TextView rankingEquipo;
 
 
 ////////////////////
 
     private FragmentPagerAdapter mPagerAdapter;
-  //  private ViewPager mViewPager;
+    // private ViewPager mViewPager;
+
+    // [START declare_database_ref]
+    private DatabaseReference mDatabase;
+    // [END declare_database_ref]
 
 
     @Override
@@ -66,28 +65,35 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
 
+        // [START initialize_database_ref]
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // [END initialize_database_ref]
+
         //////////////////////////////////////////////////////////////
 
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            private final Fragment[] mFragments = new Fragment[] {
-                    PerfilFragment.newInstance("",""),
+            private final Fragment[] mFragments = new Fragment[]{
+                    PerfilFragment.newInstance("", ""),
                     new EstadisticasFragment(),
-                    new RetoFragment(),
+                    new MyRetoFragment(),
             };
-            private final String[] mFragmentNames = new String[] {
+            private final String[] mFragmentNames = new String[]{
                     getString(R.string.titulo_perfil),
                     getString(R.string.titulo_estadisticas),
                     getString(R.string.titulo_retos)
             };
+
             @Override
             public Fragment getItem(int position) {
                 return mFragments[position];
             }
+
             @Override
             public int getCount() {
                 return mFragments.length;
             }
+
             @Override
             public CharSequence getPageTitle(int position) {
                 return mFragmentNames[position];
@@ -114,11 +120,9 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         System.out.println("info: " + mPagerAdapter.getItem(0).getTag());
         //getFragmentManager().findFragmentById(R.id.your_fragment).getView().findViewById(R.id.your_view);
         //nombreUsuario = (TextView) .getView().findViewById(R.id.tv_frag_perfil_nombre);
-       /* nombreEquipo = (TextView) findViewById(R.id.tv_frag_perfil_nombre_equipo);
-        numeroDeCacaos = (TextView) findViewById(R.id.tv_frag_perfil_tx_cacaos);
-        rankingEquipo = (TextView) findViewById(R.id.tv_frag_perfil_tx_ranking_equipo);*/
 
-       // System.out.println(nombreEquipo+" "+nombreEquipo +" "+ numeroDeCacaos +" "+ rankingEquipo);
+
+        // System.out.println(nombreEquipo+" "+nombreEquipo +" "+ numeroDeCacaos +" "+ rankingEquipo);
 
         /*// obtener información del usuario
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -133,12 +137,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
             System.out.println("información usuario: " + name +" "+ email +" "+ photoUrl +" "+ uid +" " + resultado);
-
-        }
-        nombreUsuario.setText("chiwilngo rodriguez");
-        nombreEquipo.setText("Renacuajos Bebedores");
-        numeroDeCacaos.setText("Cacaos = 50");
-        rankingEquipo.setText("Ranking = 2");*/
+        }*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -146,21 +145,35 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
             public void onClick(View view) {
              /*   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-              // RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
-              // retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
+                // RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
+                // retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
 
                 // Write a message to the database
                /* FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("retos/reto/"+RetoContent.ITEMS.size());
                 myRef.setValue("nuevo reto");*/
+                writeNewPost("","","","");
             }
         });
 
-
-
-
-
     }
+
+
+
+    // [START write_fan_out]
+    private void writeNewPost(String userId, String username, String title, String body) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = mDatabase.child("retos").push().getKey();
+        Reto reto = new Reto("id", "nombre", "descripcion", "ejemplo completo" ,0, 50);
+        Map<String, Object> retoValues = reto.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/retos/" + key, retoValues);
+      //  childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+        mDatabase.updateChildren(childUpdates);
+    }
+    // [END write_fan_out]
 
 
     @Override
@@ -196,13 +209,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         System.out.println("testing...");
     }
 
-    // TODO cambiar para retos
-    @Override
-    public void onListFragmentInteraction(RetoContent.RetoItem item) {
-
-    }
-
-    /**
+       /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
@@ -234,51 +241,6 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            Fragment retorno = null;
-            switch(position){
-                case 0:
-                    retorno = perfilTabFragment;
-                    break;
-                case 1:
-                    retorno = EstadisticasFragment.newInstance("","");
-                    break;
-                case 2:
-                    retorno = retoTabFragment;
-                    break;
-            }
-            return retorno;
-        }
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "PERFIL";
-                case 1:
-                    return "ESTADÍSTICAS";
-                case 2:
-                    return "RETOS";
-            }
-            return null;
         }
     }
 }

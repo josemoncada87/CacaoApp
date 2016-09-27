@@ -1,8 +1,10 @@
-package co.edu.icesi.innlab.cacaoapp;
+package co.edu.icesi.innlab.cacaoapp.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import co.edu.icesi.innlab.cacaoapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
