@@ -4,6 +4,7 @@ package co.edu.icesi.innlab.cacaoapp.fragments;
  * Created by 1130613425 on 26/09/2016.
  */
 
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
         import android.support.v7.widget.LinearLayoutManager;
@@ -19,10 +20,11 @@ package co.edu.icesi.innlab.cacaoapp.fragments;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.Query;
         import co.edu.icesi.innlab.cacaoapp.R;
+        import co.edu.icesi.innlab.cacaoapp.activities.DetalleRetoActividad;
         import co.edu.icesi.innlab.cacaoapp.models.Reto;
         import co.edu.icesi.innlab.cacaoapp.viewholders.RetoViewHolder;
 
-public abstract class FragmentBaseLista extends Fragment {
+public abstract class FragmentBaseListaReto extends Fragment {
 
     private static final String TAG = "Lista Fragmento:";
 
@@ -34,21 +36,18 @@ public abstract class FragmentBaseLista extends Fragment {
     protected RecyclerView mRecycler;
     protected LinearLayoutManager mManager;
 
-    public FragmentBaseLista() {}
+    public FragmentBaseListaReto() {}
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_reto_list, container, false);//
-
+        View rootView = inflater.inflate(R.layout.fragment_reto_list, container, false);
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END create_database_reference]
-
         mRecycler = (RecyclerView) rootView.findViewById(R.id.list);
         mRecycler.setHasFixedSize(true);
-
         return rootView;
     }
 
@@ -70,16 +69,16 @@ public abstract class FragmentBaseLista extends Fragment {
             protected void populateViewHolder(final RetoViewHolder viewHolder, final Reto model, final int position) {
                 final DatabaseReference retoRef = getRef(position);
 
-                // Set click listener for the whole post view
-                final String postKey = retoRef.getKey();
+                // Set click listener for the whole reto view
+                final String retoKey = retoRef.getKey();
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("CLICK");
-                       // Launch RetoDetailActivity
-                       // Intent intent = new Intent(getActivity(), MainActivity.class);
-                       // intent.putExtra(PostDetailActivity.EXTRA_POST_KEY, postKey);
-                       // startActivity(intent);
+                        System.out.println("CLICK: " + retoKey);
+                       // lanza DetalleRetoActividad y le entrega el uid
+                       Intent intent = new Intent(getActivity(), DetalleRetoActividad.class);
+                       intent.putExtra(DetalleRetoActividad.KEY_RETO, retoKey);
+                       startActivity(intent);
                     }
                 });
 
@@ -106,45 +105,7 @@ public abstract class FragmentBaseLista extends Fragment {
             }
         };
         mRecycler.setAdapter(mAdapter);
-       // mAdapter.notifyDataSetChanged();
     }
-
-/*
-    // [START post_stars_transaction]
-    private void onStarClicked(DatabaseReference postRef) {
-        postRef.runTransaction(new Transaction.Handler() {
-            @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
-                Post p = mutableData.getValue(Post.class);
-                if (p == null) {
-                    return Transaction.success(mutableData);
-                }
-
-                if (p.stars.containsKey(getUid())) {
-                    // Unstar the post and remove self from stars
-                    p.starCount = p.starCount - 1;
-                    p.stars.remove(getUid());
-                } else {
-                    // Star the post and add self to stars
-                    p.starCount = p.starCount + 1;
-                    p.stars.put(getUid(), true);
-                }
-
-                // Set value and report transaction success
-                mutableData.setValue(p);
-                return Transaction.success(mutableData);
-            }
-
-            @Override
-            public void onComplete(DatabaseError databaseError, boolean b,
-                                   DataSnapshot dataSnapshot) {
-                // Transaction completed
-                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
-            }
-        });
-    }
-    // [END post_stars_transaction]
-*/
 
     @Override
     public void onDestroy() {

@@ -24,8 +24,8 @@ public class RetoViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         mView = itemView;
         mIdView = (TextView) itemView.findViewById(R.id.tv_frag_reto_identificador);
-        mNombreView = (TextView) itemView.findViewById(R.id.tv_frag_reto_nombre);
-        mDescripcionCortaView = (TextView) itemView.findViewById(R.id.tv_frag_reto_desc_corta);
+        mNombreView = (TextView) itemView.findViewById(R.id.tv_frag_grupo_nombre);
+        mDescripcionCortaView = (TextView) itemView.findViewById(R.id.tv_frag_grupo_inventario);
         mPremioCacaosView = (TextView) itemView.findViewById(R.id.tv_frag_reto_premioCacao_cantidad);
         mPremioPuntosView = (TextView) itemView.findViewById(R.id.tv_frag_reto_premioPuntos_cantidad);
     }

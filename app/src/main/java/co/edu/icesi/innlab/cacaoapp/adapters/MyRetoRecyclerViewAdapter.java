@@ -30,8 +30,8 @@ public class MyRetoRecyclerViewAdapter extends RecyclerView.Adapter<RetoViewHold
 
     @Override
     public void onBindViewHolder(final RetoViewHolder holder, final int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText("0");
+       // holder.mItem = mValues.get(position);
+      //  holder.mIdView.setText("0");
        // holder.mContentView.setText(mValues.get(position).nombre);
        // holder.mEstadoView.setText(mValues.get(position).estado);
        // holder.mPremioView.setText(""+mValues.get(position).premio);

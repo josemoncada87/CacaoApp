@@ -2,8 +2,9 @@
     <string name="app_name">CacaoApp</string>
     <string name="title_activity_actividad_principal">CacaoApp</string>
     <string name="action_settings">Ajustes</string>
-    <string name="action_logout">Cerrar Sesión</string>
-    <string name="action_crear_reto">Crear Reto</string>
+    <string name="tx_action_logout">Cerrar Sesión</string>
+    <string name="tx_action_crear_reto">Crear Reto</string>
+    <string name="tx_action_crear_equipo">Crear Equipo</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
 

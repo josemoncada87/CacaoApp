@@ -7,8 +7,8 @@ package co.edu.icesi.innlab.cacaoapp.fragments;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
-public class MyRetoFragment extends FragmentBaseLista {
-    public MyRetoFragment() {}
+public class RetosFragment extends FragmentBaseListaReto {
+    public RetosFragment() {}
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
         return databaseReference.child("retos");

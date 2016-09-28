@@ -10,13 +10,19 @@
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
-        android:title="@string/action_logout"
+        android:title="@string/tx_action_logout"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_crear_reto"
         android:orderInCategory="100"
-        android:title="@string/action_crear_reto"
+        android:title="@string/tx_action_crear_reto"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_crear_equipo"
+        android:orderInCategory="100"
+        android:title="@string/tx_action_crear_equipo"
         app:showAsAction="never" />
 
 

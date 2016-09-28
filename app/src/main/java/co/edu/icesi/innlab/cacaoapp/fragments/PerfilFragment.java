@@ -44,7 +44,7 @@ public class PerfilFragment extends Fragment {
 
      private OnFragmentInteractionListener mListener;
 
-    private static final String TAG = "FRAG_PERFIL:";
+    private static final String TAG = "PERFIL_FRAGMENTO:";
 
 
     public PerfilFragment() {
@@ -54,8 +54,6 @@ public class PerfilFragment extends Fragment {
     public static PerfilFragment newInstance(String param1, String param2) {
         PerfilFragment fragment = new PerfilFragment();
         Bundle args = new Bundle();
-       // args.putString(ARG_PARAM1, param1);
-       // args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -101,7 +99,7 @@ public class PerfilFragment extends Fragment {
 
                     @Override
                     public void onCancelled(DatabaseError error) {
-                        Log.w(TAG, "Failed to read value.", error.toException());
+                       // Log.w(TAG, "Failed to read value.", error.toException());
                     }
                 });
             }
@@ -135,7 +133,7 @@ public class PerfilFragment extends Fragment {
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    Log.w(TAG, "Failed to read value.", error.toException());
+                   // Log.w(TAG, "Failed to read value.", error.toException());
                 }
             });
         }

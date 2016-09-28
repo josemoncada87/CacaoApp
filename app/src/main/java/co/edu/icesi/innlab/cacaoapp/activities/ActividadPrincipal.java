@@ -3,6 +3,7 @@ package co.edu.icesi.innlab.cacaoapp.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,20 +21,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.google.firebase.database.ValueEventListener;
 
 import co.edu.icesi.innlab.cacaoapp.R;
+import co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeEquiposActivity;
 import co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeRetosActivity;
 import co.edu.icesi.innlab.cacaoapp.fragments.EstadisticasFragment;
-import co.edu.icesi.innlab.cacaoapp.fragments.MyRetoFragment;
+import co.edu.icesi.innlab.cacaoapp.fragments.RetosFragment;
 import co.edu.icesi.innlab.cacaoapp.fragments.PerfilFragment;
-import co.edu.icesi.innlab.cacaoapp.models.Reto;
+import co.edu.icesi.innlab.cacaoapp.models.Usuario;
 
-public class ActividadPrincipal extends BaseActivity implements PerfilFragment.OnFragmentInteractionListener, EstadisticasFragment.OnFragmentInteractionListener{
+public class ActividadPrincipal extends BaseActivity implements PerfilFragment.OnFragmentInteractionListener{
+    private static final String TAG = "ACTIVIDAD_PRINCIPAL";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -48,16 +53,10 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
-
-
-////////////////////
-
     private FragmentPagerAdapter mPagerAdapter;
-    // private ViewPager mViewPager;
-
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
+    private boolean usuarioAdministrador;
     // [END declare_database_ref]
 
 
@@ -65,11 +64,13 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
-
+        usuarioAdministrador =  false;
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END initialize_database_ref]
 
+        //////////////////////////////////////////////////////////////
+        verificarPermisosAdministrador();
         //////////////////////////////////////////////////////////////
 
         // Create the adapter that will return a fragment for each section
@@ -77,7 +78,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
             private final Fragment[] mFragments = new Fragment[]{
                     PerfilFragment.newInstance("", ""),
                     new EstadisticasFragment(),
-                    new MyRetoFragment(),
+                    new RetosFragment(),
             };
             private final String[] mFragmentNames = new String[]{
                     getString(R.string.titulo_perfil),
@@ -115,67 +116,40 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        // mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager()); //
-        System.out.println("info: " + mPagerAdapter.getItem(0).getTag());
-        //getFragmentManager().findFragmentById(R.id.your_fragment).getView().findViewById(R.id.your_view);
-        //nombreUsuario = (TextView) .getView().findViewById(R.id.tv_frag_perfil_nombre);
 
-
-        // System.out.println(nombreEquipo+" "+nombreEquipo +" "+ numeroDeCacaos +" "+ rankingEquipo);
-
-        /*// obtener información del usuario
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            Task<GetTokenResult> resultado = user.getToken(true);
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            String uid = user.getUid();
-            System.out.println("información usuario: " + name +" "+ email +" "+ photoUrl +" "+ uid +" " + resultado);
-        }*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             /*   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                // RetoContent.addItem(RetoContent.createRetoItem("nuevo reto", 3000, true));
-                // retoTabFragment.getmRetoViewAdapter().notifyDataSetChanged();
-
-                // Write a message to the database
-               /* FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("retos/reto/"+RetoContent.ITEMS.size());
-                myRef.setValue("nuevo reto");*/
-                writeNewPost("","","","");
             }
         });
-
     }
 
-
-
-    // [START write_fan_out]
-    private void writeNewPost(String userId, String username, String title, String body) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
-        String key = mDatabase.child("retos").push().getKey();
-        Reto reto = new Reto("id", "nombre", "descripcion", "ejemplo completo" ,0, 50);
-        Map<String, Object> retoValues = reto.toMap();
-
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/retos/" + key, retoValues);
-      //  childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
-        mDatabase.updateChildren(childUpdates);
+    private void verificarPermisosAdministrador() {
+        // Se busca el usuario actual autenticado
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null) {
+            String uid = user.getUid();
+            DatabaseReference referenciaAlusuario = FirebaseDatabase.getInstance().getReference("usuarios").child(uid);
+            if(referenciaAlusuario!=null) {
+                // Lectura desde la base de datos
+                referenciaAlusuario.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // actualiza el valor de usuario cuando haya un cambio en la bd
+                        Usuario user = dataSnapshot.getValue(Usuario.class);
+                        Log.d(TAG, "****** el usuario es: " + user.username + " rol: " + user.rol);
+                        usuarioAdministrador =  user.rol.equals("admin");
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+            }
+        }
     }
-    // [END write_fan_out]
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -191,10 +165,6 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-       /* if (id == R.id.action_settings) {
-            return true;
-        }*/
         if (id == R.id.action_logout) {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, SignInActivity.class));
@@ -203,9 +173,20 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         }
 
         if (id == R.id.action_crear_reto) {
-            //FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, CreadorDeRetosActivity.class));
-            //finish();
+            if(usuarioAdministrador) {
+                startActivity(new Intent(this, CreadorDeRetosActivity.class));
+            }else{
+                Snackbar.make(mViewPager, "Requiere permisos de administrador", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+            return true;
+        }
+
+        if (id == R.id.action_crear_equipo) {
+            if(usuarioAdministrador) {
+                startActivity(new Intent(this, CreadorDeEquiposActivity.class));
+            }else{
+                Snackbar.make(mViewPager, "Requiere permisos de administrador", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
             return true;
         }
 
@@ -217,7 +198,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         System.out.println("testing...");
     }
 
-       /**
+    /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {

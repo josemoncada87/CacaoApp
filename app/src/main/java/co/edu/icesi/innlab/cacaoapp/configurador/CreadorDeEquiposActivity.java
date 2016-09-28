@@ -23,7 +23,7 @@ public class CreadorDeEquiposActivity extends BaseActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String[] nombresGrupos = {"Coate", "Mazate", "Ocelote", "Coquite", "Chapolín", "Huitzilín", "Michín","Tlacuache"};
         for(int i = 0 ; i < nombresGrupos.length;i++) {
-            generarNuevoGrupo(nombresGrupos[i]);
+       //     generarNuevoGrupo(nombresGrupos[i]);
         }
     }
 

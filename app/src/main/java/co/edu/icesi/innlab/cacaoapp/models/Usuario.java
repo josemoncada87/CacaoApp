@@ -13,6 +13,7 @@ public class Usuario {
     public String username;
     public String email;
     public String grupo;
+    public String rol;
 
     public Usuario() {
         // Default constructor required for calls to DataSnapshot.getValue(Usuario.class)
@@ -22,6 +23,7 @@ public class Usuario {
         this.username = username;
         this.email = email;
         this.grupo = "no_asignado";
+        this.rol = "user";
     }
 }
 // [END blog_user_class]

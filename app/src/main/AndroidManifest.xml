@@ -26,7 +26,8 @@
             android:label="@string/title_activity_actividad_principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".configurador.CreadorDeEquiposActivity" />
-        <activity android:name=".configurador.CreadorDeRetosActivity"></activity>
+        <activity android:name=".configurador.CreadorDeRetosActivity" />
+        <activity android:name=".activities.DetalleRetoActividad"></activity>
     </application>
 
 </manifest>
