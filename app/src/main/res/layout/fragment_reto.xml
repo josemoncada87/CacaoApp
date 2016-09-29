@@ -32,14 +32,6 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:text="Identificador"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_frag_reto_identificador"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
             android:text="Cacaos:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_frag_grupo_inventario"
             android:layout_toEndOf="@+id/tv_frag_grupo_premioCacao_titulo"
-            android:id="@+id/tv_frag_reto_premioCacao_cantidad" />
+            android:id="@+id/tv_frag_reto_premioCacao_cantidad"
+            android:textColor="@color/colorAccentCacao" />
 
         <TextView
             android:text="Puntos:"
@@ -69,15 +62,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_frag_reto_premioCacao_cantidad"
             android:layout_toEndOf="@+id/tv_frag_grupo_premioCacao_titulo"
-            android:id="@+id/tv_frag_reto_premioPuntos_cantidad" />
+            android:id="@+id/tv_frag_reto_premioPuntos_cantidad"
+            android:textColor="@color/colorAccentCacao" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/imageView2"
+            android:id="@+id/imgv_frag_reto_imagen"
             android:layout_marginEnd="13dp"
-            android:layout_below="@+id/tv_frag_grupo_nombre"
+            android:layout_alignTop="@+id/tv_frag_grupo_inventario"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="Identificador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_frag_reto_identificador"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
 

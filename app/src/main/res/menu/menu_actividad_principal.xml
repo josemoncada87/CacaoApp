@@ -24,6 +24,17 @@
         android:orderInCategory="100"
         android:title="@string/tx_action_crear_equipo"
         app:showAsAction="never" />
+    }
+
+    <item
+        android:id="@+id/action_editar_equipo"
+        android:orderInCategory="100"
+        android:title="@string/tx_action_editar_equipo"
+        app:showAsAction="never" />
+    }
+
+
+
 
 
 </menu>

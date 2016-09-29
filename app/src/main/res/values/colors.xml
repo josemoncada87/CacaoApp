@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorPrimaryDark">#33691e</color>
     <color name="colorAccent">#ff4081</color>
+    <color name="colorPrimaryCacao">#33691e</color>
+    <color name="colorPrimaryDarkCacao">#1b5e20</color>
+    <color name="colorAccentCacao">#e64a19</color>
+    <color name="primary_text_material_cacao">#2e7d32</color>
 </resources>
+

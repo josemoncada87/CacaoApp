@@ -6,6 +6,7 @@ package co.edu.icesi.innlab.cacaoapp.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.icesi.innlab.cacaoapp.R;
 import co.edu.icesi.innlab.cacaoapp.models.Reto;
@@ -18,6 +19,7 @@ public class RetoViewHolder extends RecyclerView.ViewHolder {
     public final TextView mDescripcionCortaView;
     public final TextView mPremioCacaosView;
     public final TextView mPremioPuntosView;
+    public final ImageView mImagenReto;
     public Reto mItem;
 
     public RetoViewHolder(View itemView) {
@@ -28,6 +30,7 @@ public class RetoViewHolder extends RecyclerView.ViewHolder {
         mDescripcionCortaView = (TextView) itemView.findViewById(R.id.tv_frag_grupo_inventario);
         mPremioCacaosView = (TextView) itemView.findViewById(R.id.tv_frag_reto_premioCacao_cantidad);
         mPremioPuntosView = (TextView) itemView.findViewById(R.id.tv_frag_reto_premioPuntos_cantidad);
+        mImagenReto = (ImageView) itemView.findViewById(R.id.imgv_frag_reto_imagen);
     }
 
     public void bindToReto(Reto reto, View.OnClickListener starClickListener) {
@@ -37,5 +40,7 @@ public class RetoViewHolder extends RecyclerView.ViewHolder {
         mPremioCacaosView.setText(String.valueOf(reto.premioCacao));
         mPremioPuntosView.setText(String.valueOf(reto.premioPuntos));
         //mPremioPuntosView.setOnClickListener(starClickListener); // para listener...
+        mImagenReto.setImageResource(R.drawable.reto_icon);
     }
 }
+

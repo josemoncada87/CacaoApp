@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignEnd="@+id/tv_creador_retos_titulo"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_creador_de_retos"
@@ -24,33 +31,12 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/tv_creador_retos_titulo"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="47dp"
-        android:id="@+id/edt_creador_retos_nombre"
-        android:hint="Nombre del Reto" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:layout_below="@+id/edt_creador_retos_nombre"
-        android:layout_alignEnd="@+id/edt_creador_retos_nombre"
         android:layout_marginTop="21dp"
         android:id="@+id/edt_creador_retos_desc_corta"
-        android:hint="Descripción Corta" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_below="@+id/edt_creador_retos_desc_corta"
+        android:hint="Descripción Corta"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp"
-        android:id="@+id/edt_creador_retos_desc_completa"
-        android:hint="Descripción Larga" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -58,10 +44,11 @@
         android:inputType="number"
         android:ems="10"
         android:layout_below="@+id/edt_creador_retos_desc_completa"
-        android:layout_alignEnd="@+id/edt_creador_retos_desc_completa"
         android:layout_marginTop="33dp"
         android:id="@+id/edt_creador_retos_premio_cacaos"
-        android:hint="Premio Cacaos" />
+        android:hint="Premio Cacaos"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/edt_creador_retos_premio_puntos" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,11 +61,36 @@
         android:id="@+id/edt_creador_retos_premio_puntos"
         android:hint="Premio Puntos" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_marginTop="29dp"
+        android:id="@+id/edt_creador_retos_desc_completa"
+        android:hint="Descripción Larga"
+        android:layout_below="@+id/edt_creador_retos_desc_corta"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="46dp"
+        android:id="@+id/edt_creador_retos_nombre"
+        android:hint="Nombre del Reto"
+        android:layout_below="@+id/tv_creador_retos_titulo"
+        android:layout_alignParentStart="true" />
+
     <Button
         android:text="Crear Reto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/btn_creador_retos_crear"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btn_creador_retos_crear" />
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>
+    </ScrollView>

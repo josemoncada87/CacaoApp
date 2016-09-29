@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import co.edu.icesi.innlab.cacaoapp.R;
 import co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeEquiposActivity;
 import co.edu.icesi.innlab.cacaoapp.configurador.CreadorDeRetosActivity;
+import co.edu.icesi.innlab.cacaoapp.configurador.EditorGrupos;
 import co.edu.icesi.innlab.cacaoapp.fragments.EstadisticasFragment;
 import co.edu.icesi.innlab.cacaoapp.fragments.RetosFragment;
 import co.edu.icesi.innlab.cacaoapp.fragments.PerfilFragment;
@@ -184,6 +185,15 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         if (id == R.id.action_crear_equipo) {
             if(usuarioAdministrador) {
                 startActivity(new Intent(this, CreadorDeEquiposActivity.class));
+            }else{
+                Snackbar.make(mViewPager, "Requiere permisos de administrador", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+            return true;
+        }
+
+        if (id == R.id.action_editar_equipo) {
+            if(usuarioAdministrador) {
+                startActivity(new Intent(this, EditorGrupos.class));
             }else{
                 Snackbar.make(mViewPager, "Requiere permisos de administrador", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }

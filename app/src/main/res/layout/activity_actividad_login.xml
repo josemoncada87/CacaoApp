@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_below="@+id/btn_login_ingresar"
     android:layout_alignStart="@+id/btn_login_ingresar"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="5dp">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/android"
@@ -52,16 +52,6 @@
         android:text="" />
 
     <Button
-        android:text="Ingresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_login_ingresar"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginEnd="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/tv_login_mensaje" />
-
-    <Button
         android:text="Registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,6 +71,16 @@
         android:fontFamily="sans-serif-medium"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Ingresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_login_ingresar"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/btn_login_registrar"
+        android:layout_marginEnd="51dp" />
 
 
 </RelativeLayout>
