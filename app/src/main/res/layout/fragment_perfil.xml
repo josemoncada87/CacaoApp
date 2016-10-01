@@ -18,11 +18,13 @@
             android:layout_marginTop="25dp"
             android:id="@+id/imgv_frag_perfil_foto_usuario"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            />
 
 
         <TextView
-            android:text="Iguanas Salvajes"
+            android:text="Equipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -32,7 +34,7 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="Sultanito Martinez de Concha"
+            android:text="Actualizando usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -68,7 +70,9 @@
             android:id="@+id/tv_frag_perfil_tx_ranking_equipo"
             android:layout_below="@+id/tv_frag_perfil_tx_cant_puntos"
             android:layout_alignStart="@+id/tv_frag_perfil_tx_puntos"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            android:visibility="invisible"
+            />
 
         <TextView
             android:text="Medallas"
@@ -78,11 +82,12 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_below="@+id/tv_frag_perfil_tx_ranking_equipo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"/>
 
         <TextView
             android:text="999"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_frag_perfil_tx_cant_cacaos"
             android:layout_marginTop="19dp"
@@ -90,11 +95,12 @@
             android:textAlignment="center"
             android:textStyle="normal|bold"
             android:layout_below="@+id/tv_frag_perfil_tx_cacaos"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:text="333"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_frag_perfil_tx_cant_puntos"
             android:textColor="@color/colorAccentCacao"
@@ -102,7 +108,8 @@
             android:textAlignment="center"
             android:textStyle="normal|bold"
             android:layout_below="@+id/tv_frag_perfil_tx_puntos"
-            android:layout_alignStart="@+id/tv_frag_perfil_tx_cant_cacaos" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

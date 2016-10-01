@@ -10,4 +10,6 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="co.edu.icesi.innlab.cacaoapp.fragments.EstadisticasFragment"
-    tools:listitem="@layout/fragment_grupo" />
+    tools:listitem="@layout/fragment_grupo"
+
+    />

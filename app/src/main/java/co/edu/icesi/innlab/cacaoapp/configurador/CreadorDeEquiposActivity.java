@@ -30,6 +30,7 @@ public class CreadorDeEquiposActivity extends BaseActivity {
         nombre = (EditText) findViewById(R.id.edt_crea_equipo_nombre_equipos);
         cacaos = (EditText) findViewById(R.id.edt_crea_equipo_s_ncacaos);
         puntos = (EditText) findViewById(R.id.edt_crea_equipo_npuntos);
+        btnCrear = (Button) findViewById(R.id.btn_crea_equipo_crear);
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
