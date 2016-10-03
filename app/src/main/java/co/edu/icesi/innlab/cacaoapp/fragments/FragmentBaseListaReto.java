@@ -83,12 +83,11 @@ public abstract class FragmentBaseListaReto extends Fragment {
                 });
 
                 // Determine if the current user has liked this post and set UI accordingly
-              /* if (model.stars.containsKey(getUid())) {
+                /* if (model.stars.containsKey(getUid())) {
                     viewHolder.starView.setImageResource(R.drawable.ic_toggle_star_24);
                 } else {
                     viewHolder.starView.setImageResource(R.drawable.ic_toggle_star_outline_24);
                 }*/
-
                 // Bind Reto to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToReto(model, new View.OnClickListener() {
                     @Override
@@ -96,7 +95,6 @@ public abstract class FragmentBaseListaReto extends Fragment {
                         // Need to write to both places the post is stored
                        // DatabaseReference globalRetosRef = mDatabase.child("retos").child(retoRef.getKey());
                         //DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(retoRef.getKey());
-
                         // Run two transactions
                         // onStarClicked(globalPostRef);
                         // onStarClicked(userPostRef);
