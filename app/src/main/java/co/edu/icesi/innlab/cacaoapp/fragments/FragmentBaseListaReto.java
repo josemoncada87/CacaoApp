@@ -74,7 +74,7 @@ public abstract class FragmentBaseListaReto extends Fragment {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        System.out.println("CLICK: " + retoKey);
+                       //System.out.println("CLICK: " + retoKey);
                        // lanza DetalleRetoActividad y le entrega el uid
                        Intent intent = new Intent(getActivity(), DetalleRetoActividad.class);
                        intent.putExtra(DetalleRetoActividad.KEY_RETO, retoKey);
