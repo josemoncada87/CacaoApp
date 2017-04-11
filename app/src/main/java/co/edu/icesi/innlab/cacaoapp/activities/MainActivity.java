@@ -1,6 +1,9 @@
 package co.edu.icesi.innlab.cacaoapp.activities;
+/**
+ * Created by Jose Moncada on 25/09/2016.
+ * Version 1
+ */
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

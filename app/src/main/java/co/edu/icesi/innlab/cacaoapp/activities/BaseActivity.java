@@ -1,12 +1,12 @@
 package co.edu.icesi.innlab.cacaoapp.activities;
 
 /**
- * Created by Usuario on 25/09/2016.
+ * Created by Jose Moncada on 25/09/2016.
+ * Version 1
  */
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -20,7 +20,6 @@ public class BaseActivity extends AppCompatActivity {
             mProgressDialog.setCancelable(false);
             mProgressDialog.setMessage("Sembrando Cacao...");
         }
-
         mProgressDialog.show();
     }
 

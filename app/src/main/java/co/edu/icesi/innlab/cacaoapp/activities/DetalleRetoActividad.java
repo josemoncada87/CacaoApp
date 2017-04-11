@@ -1,7 +1,11 @@
 package co.edu.icesi.innlab.cacaoapp.activities;
 
+/**
+ * Created by Jose Moncada on 25/09/2016.
+ * Version 1
+ */
+
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,25 +25,21 @@ public class DetalleRetoActividad extends AppCompatActivity {
 
     public static final String KEY_RETO = "informacion_reto";
     private String uid;
-
     //Views
-
     private TextView retoNombre;
     private TextView retoCantCacaos;
     private TextView retoCantPuntos;
     private TextView retoDescCompleta;
     private TextView retoDescCorta;
     private Button btnRetoOk;
-
-    // BD
-
+    //BD
     private DatabaseReference ref;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_reto_actividad);
+
         Intent lanzador = getIntent();
         uid = lanzador.getStringExtra(KEY_RETO);
 
@@ -78,6 +78,5 @@ public class DetalleRetoActividad extends AppCompatActivity {
 
             }
         });
-
     }
 }

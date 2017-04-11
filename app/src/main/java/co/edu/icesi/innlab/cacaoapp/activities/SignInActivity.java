@@ -1,5 +1,10 @@
 package co.edu.icesi.innlab.cacaoapp.activities;
 
+/**
+ * Created by Jose Moncada on 25/09/2016.
+ * Version 1
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,8 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import co.edu.icesi.innlab.cacaoapp.R;
 import co.edu.icesi.innlab.cacaoapp.models.Usuario;
@@ -24,6 +32,7 @@ import co.edu.icesi.innlab.cacaoapp.models.Usuario;
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "SignInActivity";
+    public static final String ROL_TAG = "ROL";
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -122,9 +131,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             writeNewUser(user.getUid(), username, user.getEmail());
         }
         // Go to Actividad Principal
-        startActivity(new Intent(SignInActivity.this, ActividadPrincipal.class));
+        Intent i = new Intent(SignInActivity.this, ActividadPrincipal.class);
+        startActivity(i);
         finish();
-    }
+        }
 
     private String usernameFromEmail(String email) {
         if (email.contains("@")) {

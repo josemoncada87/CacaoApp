@@ -64,6 +64,9 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        verificarPermisosAdministrador();
+
         setContentView(R.layout.activity_actividad_principal);
         usuarioAdministrador =  false;
         // [START initialize_database_ref]
@@ -71,7 +74,7 @@ public class ActividadPrincipal extends BaseActivity implements PerfilFragment.O
         // [END initialize_database_ref]
 
         //////////////////////////////////////////////////////////////
-        verificarPermisosAdministrador();
+
         //////////////////////////////////////////////////////////////
 
         // Create the adapter that will return a fragment for each section
